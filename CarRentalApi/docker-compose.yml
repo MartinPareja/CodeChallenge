@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  carrental.api:
+    build:
+      context: .
+      dockerfile: CarRental.Api/Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - redis
+    environment:
+      # This connection string should match the service name defined for Redis
+      # 'redis' is the service name, '6379' is the default Redis port
+      ASPNETCORE_REDIS_CONNECTIONSTRING: redis:6379
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data # Persist Redis data
+
+volumes:
+  redis_data:

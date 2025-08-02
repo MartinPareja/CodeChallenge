@@ -1,0 +1,41 @@
+// src/app/pages/car-fleet/car-fleet.component.scss
+// (Full file content)
+
+.page-card {
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-style: italic;
+  color: #757575;
+  margin-bottom: 1rem;
+}
+
+.filters-card {
+  margin-bottom: 2rem;
+}
+
+.filter-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  mat-form-field {
+    flex: 1 1 150px;
+  }
+}
+
+.card-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.no-data-message {
+  text-align: center;
+  padding: 2rem;
+  color: #757575;
+}

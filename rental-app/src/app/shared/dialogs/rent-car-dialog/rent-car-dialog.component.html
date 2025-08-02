@@ -1,0 +1,46 @@
+<div class="dialog-content">
+  <h2 mat-dialog-title>Confirm Rental</h2>
+  <mat-card-content>
+    <p class="summary-text">You are about to rent this car:</p>
+    <div class="car-summary">
+      <b>{{ data.car.make }} {{ data.car.model }} ({{ data.car.year }})</b>
+      <p>Dates: {{ data.startDate | date }} to {{ data.endDate | date }}</p>
+      <p>Location: {{ data.car.location }}</p>
+    </div>
+    <p class="summary-text mt-4">Please provide customer details to proceed.</p>
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()" class="customer-form">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Full Name</mat-label>
+        <input matInput formControlName="fullName" required>
+        <mat-error *ngIf="customerForm.get('fullName')?.hasError('required')">Full Name is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Street</mat-label>
+        <input matInput formControlName="street" required>
+        <mat-error *ngIf="customerForm.get('street')?.hasError('required')">Street is required</mat-error>
+      </mat-form-field>
+
+      <div class="dual-fields">
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>City</mat-label>
+          <input matInput formControlName="city" required>
+          <mat-error *ngIf="customerForm.get('city')?.hasError('required')">City is required</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+          <mat-label>Country Code</mat-label>
+          <input matInput formControlName="countryCode" required>
+          <mat-error *ngIf="customerForm.get('countryCode')?.hasError('required')">Country Code is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="loading-bar">
+        <mat-progress-bar *ngIf="loading()" mode="indeterminate"></mat-progress-bar>
+      </div>
+    </form>
+  </mat-card-content>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()" [disabled]="loading()">Cancel</button>
+    <button mat-flat-button color="primary" [disabled]="customerForm.invalid || loading()" (click)="onSubmit()">Confirm</button>
+  </mat-dialog-actions>
+</div>

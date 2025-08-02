@@ -1,0 +1,24 @@
+// src/app/app.component.scss
+// (Full file content)
+
+.main-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; // Ensure it stays on top of other content
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding-top: 64px; // Adjust for the height of the toolbar
+  height: 100vh;
+  box-sizing: border-box;
+}
+
+.active-link {
+    border-bottom: 2px solid white;
+}

@@ -1,0 +1,58 @@
+<div class="container">
+  <mat-card class="page-card mat-elevation-z1">
+    <mat-card-header>
+      <mat-card-title>My Rentals</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="description">View all rentals associated with your account.</p>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="errorMessage()" class="error-message mat-body-2 text-center">{{ errorMessage() }}</div>
+
+  <mat-card class="card-table mt-4" *ngIf="rentals().length > 0">
+    <mat-card-content>
+      <table mat-table [dataSource]="rentals()" class="w-100">
+        <ng-container matColumnDef="car">
+          <th mat-header-cell *matHeaderCellDef> Car ID </th>
+          <td mat-cell *matCellDef="let element"> {{ element.car.carId }} </td>
+        </ng-container>
+        <ng-container matColumnDef="make">
+          <th mat-header-cell *matHeaderCellDef> Make </th>
+          <td mat-cell *matCellDef="let element"> {{ element.car.make }} </td>
+        </ng-container>
+        <ng-container matColumnDef="model">
+          <th mat-header-cell *matHeaderCellDef> Model </th>
+          <td mat-cell *matCellDef="let element"> {{ element.car.model }} </td>
+        </ng-container>
+        <ng-container matColumnDef="startDate">
+          <th mat-header-cell *matHeaderCellDef> Start Date </th>
+          <td mat-cell *matCellDef="let element"> {{ element.startDate | date }} </td>
+        </ng-container>
+        <ng-container matColumnDef="endDate">
+          <th mat-header-cell *matHeaderCellDef> End Date </th>
+          <td mat-cell *matCellDef="let element"> {{ element.endDate | date }} </td>
+        </ng-container>
+        <ng-container matColumnDef="isCancelled">
+          <th mat-header-cell *matHeaderCellDef> Status </th>
+          <td mat-cell *matCellDef="let element"> {{ element.isCancelled ? 'Cancelled' : 'Active' }} </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator
+        [length]="totalCount()"
+        [pageSize]="pageSize"
+        [pageIndex]="pageIndex"
+        (page)="handlePageEvent($event)"
+        [hidePageSize]="false"
+        [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page">
+      </mat-paginator>
+    </mat-card-content>
+  </mat-card>
+
+  <div *ngIf="rentals().length === 0" class="no-data-message">
+    <p>You have no rentals.</p>
+  </div>
+</div>

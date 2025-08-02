@@ -1,0 +1,56 @@
+###########################
+# General Ignore Rules
+###########################
+# Ignore editor config files
+.editorconfig
+
+# Log files
+*.log
+
+# Operating System files
+.DS_Store
+Thumbs.db
+
+###########################
+# .NET Project Ignore Rules
+###########################
+# Visual Studio files
+.vs/
+
+# Build artifacts
+[Bb]in/
+[Oo]bj/
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# NuGet packages
+packages/
+*.nupkg
+.nuget/
+
+# VSTest and other files
+TestResults/
+_ReSharper*/
+
+###########################
+# Angular/Node Project Ignore Rules
+###########################
+# Node modules
+node_modules/
+
+# Build output
+/dist
+
+# npm debug logs
+npm-debug.log
+.npm/
+
+# Visual Studio Code settings
+.vscode/
+
+# Environment files
+.env

@@ -1,0 +1,43 @@
+// src/app/shared/dialogs/rent-car-dialog/rent-car-dialog.component.scss
+// (Full file content)
+
+.dialog-content {
+  padding: 1rem;
+}
+
+.car-summary {
+  background-color: #f5f5f5;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+}
+
+.summary-text {
+  font-weight: 500;
+  color: #333;
+}
+
+.customer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.dual-fields {
+  display: flex;
+  gap: 1rem;
+
+  mat-form-field {
+    flex: 1 1 50%;
+  }
+}
+
+.loading-bar {
+  height: 4px;
+  margin-top: 1rem;
+}
+
+.w-100 {
+  width: 100%;
+}

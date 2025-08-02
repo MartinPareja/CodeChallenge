@@ -1,0 +1,27 @@
+// src/app/pages/my-rentals/my-rentals.component.scss
+// (Full file content)
+
+.page-card {
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-style: italic;
+  color: #757575;
+  margin-bottom: 1rem;
+}
+
+.card-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.no-data-message {
+  text-align: center;
+  padding: 2rem;
+  color: #757575;
+}

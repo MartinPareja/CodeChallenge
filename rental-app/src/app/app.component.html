@@ -1,0 +1,25 @@
+<mat-toolbar color="primary" class="main-toolbar">
+  <span>{{ title }}</span>
+
+  <ng-container *ngIf="authService.isLoggedIn()" class="nav-links">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active-link">Dashboard</a>
+    <a mat-button routerLink="/upcoming-services" routerLinkActive="active-link">Upcoming Services</a>
+    <a mat-button routerLink="/car-fleet" routerLinkActive="active-link">Car Fleet</a>
+    <a mat-button routerLink="/my-rentals" routerLinkActive="active-link">My Rentals</a>
+  </ng-container>
+
+  <span class="spacer"></span>
+
+  <ng-container *ngIf="authService.isLoggedIn()">
+    <button mat-button (click)="authService.logout()">Logout</button>
+  </ng-container>
+
+  <ng-container *ngIf="!authService.isLoggedIn()">
+    <a mat-button routerLink="/login" routerLinkActive="active-link">Login</a>
+    <a mat-button routerLink="/register" routerLinkActive="active-link">Register</a>
+  </ng-container>
+</mat-toolbar>
+
+<div class="content">
+  <router-outlet></router-outlet>
+</div>

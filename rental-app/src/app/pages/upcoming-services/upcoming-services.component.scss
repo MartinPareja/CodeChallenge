@@ -1,0 +1,38 @@
+// src/app/pages/upcoming-services/upcoming-services.component.scss
+// (Full file content)
+
+.page-card {
+  margin-bottom: 2rem;
+}
+
+.description {
+  font-style: italic;
+  color: #757575;
+  margin-bottom: 1rem;
+}
+
+.header-controls {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.date-picker-container {
+  max-width: 300px;
+  width: 100%;
+}
+
+.table-card {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.no-data-message {
+  text-align: center;
+  padding: 2rem;
+  color: #757575;
+}
