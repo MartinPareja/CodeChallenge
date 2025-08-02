@@ -1,9 +1,9 @@
 import {
-  coerceBooleanProperty
-} from "./chunk-DQ7OVFPD.js";
-import {
   _animationsDisabled
 } from "./chunk-X2O37RTL.js";
+import {
+  coerceBooleanProperty
+} from "./chunk-DQ7OVFPD.js";
 import {
   _IdGenerator
 } from "./chunk-3CLY2IY2.js";
@@ -1629,4 +1629,4 @@ export {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatFormField
 };
-//# sourceMappingURL=chunk-GXVNKCFK.js.map
+//# sourceMappingURL=chunk-WESXWLG2.js.map

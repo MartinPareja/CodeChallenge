@@ -5,7 +5,6 @@ using CarRental.Persistence;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Security.Claims;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -67,67 +66,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidAudience = audience,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
         };
-
-        options.Events = new JwtBearerEvents
-        {
-            OnAuthenticationFailed = context =>
-            {
-                var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerHandler>>();
-                logger.LogError(context.Exception, "JWT Authentication Failed. Error Type: {ErrorType}", context.Exception?.GetType().Name ?? "Unknown");
-
-                // --- DETAILED JWT AUTHENTICATION ERROR (CONSOLE & FILE) ---
-                var errorMessage = new StringBuilder();
-                errorMessage.AppendLine("--- DETAILED JWT AUTHENTICATION ERROR ---");
-                errorMessage.AppendLine($"Timestamp: {DateTime.UtcNow}");
-                if (context.Exception != null)
-                {
-                    errorMessage.AppendLine($"Exception Type: {context.Exception.GetType().Name}");
-                    errorMessage.AppendLine($"Message: {context.Exception.Message}");
-                    errorMessage.AppendLine($"Stack Trace: {context.Exception.StackTrace}");
-                    if (context.Exception.InnerException != null)
-                    {
-                        errorMessage.AppendLine($"Inner Exception Type: {context.Exception.InnerException.GetType().Name}");
-                        errorMessage.AppendLine($"Inner Exception Message: {context.Exception.InnerException.Message}");
-                    }
-                }
-                else
-                {
-                    errorMessage.AppendLine("No specific exception provided by authentication handler.");
-                }
-                errorMessage.AppendLine("-----------------------------------------");
-
-                // Log to console
-                Console.WriteLine(errorMessage.ToString());
-
-                // Log to file
-                try
-                {
-                    var logFilePath = Path.Combine(AppContext.BaseDirectory, "jwt_auth_errors.log");
-                    File.AppendAllText(logFilePath, errorMessage.ToString() + Environment.NewLine);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Error writing to log file: {ex.Message}");
-                }
-                // -----------------------------------------------------------
-
-                return Task.CompletedTask;
-            },
-            OnTokenValidated = context =>
-            {
-                var logger = context.HttpContext.RequestServices.GetRequiredService<ILogger<JwtBearerHandler>>();
-                logger.LogInformation("JWT Token Validated Successfully for user: {Username}", context.Principal?.Identity?.Name);
-
-                if (context.Principal is ClaimsPrincipal principal)
-                {
-                    foreach (var claim in principal.Claims)
-                    {
-                        logger.LogDebug("Claim: {Type} = {Value}", claim.Type, claim.Value);
-                    }
-                }
-                return Task.CompletedTask;
-            }
-        };
     });
 
 builder.Services.AddAuthorization();
@@ -139,7 +77,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                       builder =>
                       {
-                          builder.WithOrigins("http://localhost:4200") // The Angular app's URL
+                          builder.WithOrigins("http://localhost:5000") // The Angular app's URL
                                  .AllowAnyHeader()
                                  .AllowAnyMethod();
                       });

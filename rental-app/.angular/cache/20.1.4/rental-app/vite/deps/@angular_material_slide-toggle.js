@@ -10,11 +10,11 @@ import {
   _StructuralStylesLoader
 } from "./chunk-NX33AZZD.js";
 import "./chunk-OSCBKXMX.js";
-import "./chunk-QCETVJKM.js";
-import "./chunk-DQ7OVFPD.js";
 import {
   _animationsDisabled
 } from "./chunk-X2O37RTL.js";
+import "./chunk-QCETVJKM.js";
+import "./chunk-DQ7OVFPD.js";
 import "./chunk-EOFW2REK.js";
 import {
   FocusMonitor,
@@ -74,8 +74,8 @@ import {
   ɵɵrestoreView,
   ɵɵviewQuery
 } from "./chunk-N2WT6MM3.js";
-import "./chunk-Z3F4H3BY.js";
 import "./chunk-6PNJZOQ4.js";
+import "./chunk-Z3F4H3BY.js";
 import "./chunk-ZG272CAW.js";
 
 // node_modules/@angular/material/fesm2022/slide-toggle.mjs

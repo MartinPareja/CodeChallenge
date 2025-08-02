@@ -1,7 +1,7 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   MatCommonModule
-} from "./chunk-WPEFA7BU.js";
+} from "./chunk-C2IOSQHY.js";
 import {
   Directive,
   NgModule,
@@ -85,4 +85,4 @@ export {
   setLines,
   MatLineModule
 };
-//# sourceMappingURL=chunk-QF5BZ3VR.js.map
+//# sourceMappingURL=chunk-PQVHDF75.js.map
