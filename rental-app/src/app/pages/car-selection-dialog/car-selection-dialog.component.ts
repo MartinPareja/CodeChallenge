@@ -1,5 +1,3 @@
-// src/app/pages/car-selection-dialog/car-selection-dialog.component.ts
-
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';

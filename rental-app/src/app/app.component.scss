@@ -1,12 +1,10 @@
-// src/app/app.component.scss
-// (Full file content)
 
 .main-toolbar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000; // Ensure it stays on top of other content
+  z-index: 1000; 
 }
 
 .spacer {
@@ -14,7 +12,7 @@
 }
 
 .content {
-  padding-top: 64px; // Adjust for the height of the toolbar
+  padding-top: 64px; 
   height: 100vh;
   box-sizing: border-box;
 }

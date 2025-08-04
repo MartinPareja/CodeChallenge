@@ -1,6 +1,3 @@
-// src/app/pages/dashboard/dashboard.component.ts
-// (Full file content)
-
 import { Component, inject, OnInit, signal, viewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';

@@ -1,6 +1,3 @@
-// src/app/pages/login/login.component.ts
-// (Full file content)
-
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';

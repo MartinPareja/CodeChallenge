@@ -1,6 +1,3 @@
-// src/app/shared/dialogs/rent-car-dialog/rent-car-dialog.component.ts
-// (Full file content)
-
 import { Component, inject, Inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';

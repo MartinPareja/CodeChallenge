@@ -1,6 +1,3 @@
-// src/app/pages/upcoming-services/upcoming-services.component.ts
-// (Full file content)
-
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -37,7 +34,6 @@ export class UpcomingServicesComponent implements OnInit {
   private fb = inject(FormBuilder);
 
   carsForService = signal<UpcomingServiceCar[]>([]);
-  // Removed 'mileage' and added 'location'
   displayedColumns: string[] = ['make', 'model', 'year', 'location', 'serviceDate'];
   errorMessage = signal<string | null>(null);
 

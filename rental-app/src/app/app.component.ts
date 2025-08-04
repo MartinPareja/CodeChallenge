@@ -1,6 +1,3 @@
-// src/app/app.component.ts
-// (Full file content)
-
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet, RouterLink } from '@angular/router';
@@ -27,5 +24,5 @@ import { MatMenuModule } from '@angular/material/menu';
 })
 export class AppComponent {
   title = 'Car Fleet Management';
-  authService = inject(AuthService); // Inject the auth service
+  authService = inject(AuthService);
 }

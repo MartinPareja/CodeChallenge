@@ -44,14 +44,12 @@ export class RegisterComponent {
         .subscribe({
           next: () => {
             this.success = 'Registration successful! You can now log in.';
-            // Redirect to login page after a short delay
             setTimeout(() => {
               this.router.navigate(['/login']);
             }, 2000);
           },
           error: (err) => {
             this.error = err.error.title || 'Registration failed. Please try again.';
-            // Handle validation errors from the API
             if (err.status === 400 && err.error.errors) {
               this.error = Object.values(err.error.errors).flat().join(' ');
             }

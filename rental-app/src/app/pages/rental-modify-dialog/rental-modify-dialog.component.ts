@@ -1,5 +1,3 @@
-// src/app/pages/rental-modify-dialog/rental-modify-dialog.component.ts
-
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -85,7 +83,7 @@ export class RentalModifyDialogComponent implements OnInit {
 
       this.rentalService.modifyRental(this.data.rentalId, payload).subscribe({
         next: () => {
-          this.dialogRef.close(true); // Close with a positive result
+          this.dialogRef.close(true);
         },
         error: err => {
           console.error(err);

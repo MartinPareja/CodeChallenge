@@ -1,5 +1,3 @@
-// src/app/app.routes.ts
-// (Full file content)
 
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';

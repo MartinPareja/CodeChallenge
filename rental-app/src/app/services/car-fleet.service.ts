@@ -1,6 +1,3 @@
-// src/app/services/car-fleet.service.ts
-// (Full file content)
-
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
@@ -31,7 +28,7 @@ export class CarFleetService {
   private apiUrl = environment.apiUrl;
 
   getCarFleet(params: HttpParams): Observable<CarFleetResponse> {
-    // Corrected API URL
+    
     return this.http.get<CarFleetResponse>(`${this.apiUrl}/Rentals/availability`, { params });
   }
 }

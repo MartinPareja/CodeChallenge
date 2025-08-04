@@ -1,5 +1,3 @@
-// src/app/pages/my-rentals/my-rentals.component.ts
-
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -10,8 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // <-- ADD THIS IMPORT
-import { MatTooltipModule } from '@angular/material/tooltip'; // <-- ADD THIS IMPORT
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { Rental, RentalService } from '../../services/rental.service';
 import { RentalModifyDialogComponent } from '../rental-modify-dialog/rental-modify-dialog.component';
 
@@ -25,8 +23,8 @@ import { RentalModifyDialogComponent } from '../rental-modify-dialog/rental-modi
     MatPaginatorModule,
     MatButtonModule,
     MatIconModule,
-    MatProgressSpinnerModule, // <-- AND ADD IT HERE
-    MatTooltipModule, // <-- AND HERE
+    MatProgressSpinnerModule,
+    MatTooltipModule,
     DatePipe
   ],
   templateUrl: './my-rentals.component.html',
@@ -82,7 +80,7 @@ export class MyRentalsComponent implements OnInit {
   onModifyRental(rental: Rental): void {
     const dialogRef = this.dialog.open(RentalModifyDialogComponent, {
       width: '600px',
-      data: rental // Pass the rental data to the dialog
+      data: rental
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -90,7 +88,7 @@ export class MyRentalsComponent implements OnInit {
         this.snackBar.open('Rental modified successfully!', 'Dismiss', {
           duration: 3000
         });
-        this.fetchMyRentals(); // Refresh the table
+        this.fetchMyRentals();
       }
     });
   }
@@ -102,7 +100,7 @@ export class MyRentalsComponent implements OnInit {
           this.snackBar.open('Rental cancelled successfully!', 'Dismiss', {
             duration: 3000
           });
-          this.fetchMyRentals(); // Refresh the table
+          this.fetchMyRentals();
         },
         error: err => {
           console.error(err);
