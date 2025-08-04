@@ -29,7 +29,7 @@ public class CheckAvailabilityQueryHandler : IRequestHandler<CheckAvailabilityQu
 
         var result = new PaginatedResult<CarAvailabilityDto>(availableCars, request.Limit, request.Offset, totalCount);
 
-        await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromMinutes(5));
+        await _cacheService.SetAsync(cacheKey, result, TimeSpan.FromSeconds(15));
 
         return result;
     }

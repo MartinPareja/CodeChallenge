@@ -1,8 +1,7 @@
 import { createRequire } from 'module';const require = createRequire(import.meta.url);
 import {
   _DisposeViewRepeaterStrategy
-} from "./chunk-5HVOHFRC.js";
-import "./chunk-ZTNXJWIU.js";
+} from "./chunk-KEAT4NKM.js";
 import {
   DataSource,
   ScrollingModule,
@@ -11,20 +10,21 @@ import {
   _VIEW_REPEATER_STRATEGY,
   _ViewRepeaterOperation,
   isDataSource
-} from "./chunk-Y2TMKCRC.js";
-import "./chunk-YZRXDCC3.js";
+} from "./chunk-E2GMT2J5.js";
+import "./chunk-ZTNXJWIU.js";
 import {
   MatCommonModule
-} from "./chunk-C2IOSQHY.js";
-import "./chunk-UDOL2RO6.js";
+} from "./chunk-CVWMFA2G.js";
+import "./chunk-LIOQXVVL.js";
+import "./chunk-YZRXDCC3.js";
 import {
   Directionality
-} from "./chunk-LLSWVYZR.js";
+} from "./chunk-BEMFKX47.js";
 import {
   Platform,
   _isNumberValue
-} from "./chunk-RCG4WXCM.js";
-import "./chunk-MVIO5G24.js";
+} from "./chunk-MDTFJUIQ.js";
+import "./chunk-L2U3AYM6.js";
 import "./chunk-6K7GMTFC.js";
 import {
   ChangeDetectionStrategy,
@@ -79,13 +79,13 @@ import {
   ɵɵtext,
   ɵɵtextInterpolate1,
   ɵɵviewQuery
-} from "./chunk-VVWD3JUH.js";
-import {
-  require_operators
-} from "./chunk-2XLRDDJW.js";
+} from "./chunk-5CHREFP2.js";
 import {
   require_cjs
 } from "./chunk-43KPLV43.js";
+import {
+  require_operators
+} from "./chunk-2XLRDDJW.js";
 import "./chunk-TXGYY7YM.js";
 import {
   __toESM

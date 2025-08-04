@@ -1,5 +1,4 @@
-// src/app/services/rental.service.ts
-// (Full file content)
+// arc/app/services/rental.service.ts
 
 import { inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
@@ -59,6 +58,14 @@ export interface MyRentalsResponse {
   offset: number;
 }
 
+// New interface for the modify request body
+export interface ModifyRentalRequest {
+  rentalId: string;
+  carId: string;
+  newStartDate: string;
+  newEndDate: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -78,8 +85,17 @@ export class RentalService {
     return this.http.post<RentalResponse>(`${this.apiUrl}/Rentals`, rental);
   }
 
-  // Corrected method to fetch rentals for the current user
   getMyRentals(params: HttpParams): Observable<MyRentalsResponse> {
     return this.http.get<MyRentalsResponse>(`${this.apiUrl}/Rentals/user`, { params });
+  }
+
+  // New method to modify a rental
+  modifyRental(rentalId: string, payload: ModifyRentalRequest): Observable<void> {
+    return this.http.put<void>(`${this.apiUrl}/Rentals/${rentalId}/modify`, payload);
+  }
+
+  // New method to cancel a rental
+  cancelRental(rentalId: string): Observable<void> {
+    return this.http.post<void>(`${this.apiUrl}/Rentals/${rentalId}/cancel`, {});
   }
 }

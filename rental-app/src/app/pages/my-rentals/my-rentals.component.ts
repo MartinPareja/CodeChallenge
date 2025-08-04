@@ -1,5 +1,4 @@
 // src/app/pages/my-rentals/my-rentals.component.ts
-// (Full file content)
 
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { CommonModule, DatePipe } from '@angular/common';
@@ -7,7 +6,14 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { HttpParams } from '@angular/common/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; // <-- ADD THIS IMPORT
+import { MatTooltipModule } from '@angular/material/tooltip'; // <-- ADD THIS IMPORT
 import { Rental, RentalService } from '../../services/rental.service';
+import { RentalModifyDialogComponent } from '../rental-modify-dialog/rental-modify-dialog.component';
 
 @Component({
   selector: 'app-my-rentals',
@@ -17,6 +23,10 @@ import { Rental, RentalService } from '../../services/rental.service';
     MatCardModule,
     MatTableModule,
     MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    MatProgressSpinnerModule, // <-- AND ADD IT HERE
+    MatTooltipModule, // <-- AND HERE
     DatePipe
   ],
   templateUrl: './my-rentals.component.html',
@@ -24,23 +34,26 @@ import { Rental, RentalService } from '../../services/rental.service';
 })
 export class MyRentalsComponent implements OnInit {
   private rentalService = inject(RentalService);
+  private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar);
 
   rentals = signal<Rental[]>([]);
   totalCount = signal<number>(0);
   errorMessage = signal<string | null>(null);
+  isLoading = signal<boolean>(false);
 
   pageSize = 10;
   pageIndex = 0;
   pageSizeOptions = [5, 10, 20];
 
-  // Updated columns to display richer data
-  displayedColumns: string[] = ['car', 'make', 'model', 'startDate', 'endDate', 'isCancelled'];
+  displayedColumns: string[] = ['make', 'model', 'startDate', 'endDate', 'isCancelled', 'actions'];
 
   ngOnInit(): void {
     this.fetchMyRentals();
   }
 
   fetchMyRentals(): void {
+    this.isLoading.set(true);
     this.errorMessage.set(null);
     const params = new HttpParams()
       .set('limit', this.pageSize)
@@ -50,10 +63,12 @@ export class MyRentalsComponent implements OnInit {
       next: response => {
         this.rentals.set(response.data);
         this.totalCount.set(response.totalCount);
+        this.isLoading.set(false);
       },
       error: err => {
         console.error(err);
         this.errorMessage.set('Could not load rentals data. Please try again.');
+        this.isLoading.set(false);
       }
     });
   }
@@ -62,5 +77,40 @@ export class MyRentalsComponent implements OnInit {
     this.pageSize = e.pageSize;
     this.pageIndex = e.pageIndex;
     this.fetchMyRentals();
+  }
+
+  onModifyRental(rental: Rental): void {
+    const dialogRef = this.dialog.open(RentalModifyDialogComponent, {
+      width: '600px',
+      data: rental // Pass the rental data to the dialog
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.snackBar.open('Rental modified successfully!', 'Dismiss', {
+          duration: 3000
+        });
+        this.fetchMyRentals(); // Refresh the table
+      }
+    });
+  }
+
+  onCancelRental(rentalId: string): void {
+    if (confirm('Are you sure you want to cancel this rental?')) {
+      this.rentalService.cancelRental(rentalId).subscribe({
+        next: () => {
+          this.snackBar.open('Rental cancelled successfully!', 'Dismiss', {
+            duration: 3000
+          });
+          this.fetchMyRentals(); // Refresh the table
+        },
+        error: err => {
+          console.error(err);
+          this.snackBar.open('Could not cancel rental. Please try again.', 'Dismiss', {
+            duration: 3000
+          });
+        }
+      });
+    }
   }
 }

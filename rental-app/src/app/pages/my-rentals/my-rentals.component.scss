@@ -1,5 +1,6 @@
 // src/app/pages/my-rentals/my-rentals.component.scss
-// (Full file content)
+
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 .page-card {
   margin-bottom: 2rem;
@@ -24,4 +25,52 @@
   text-align: center;
   padding: 2rem;
   color: #757575;
+}
+
+.cancelled {
+  color: #f44336;
+  font-weight: 500;
+  text-decoration: line-through;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  color: #757575;
+}
+
+.loading-spinner p {
+  margin-top: 1rem;
+}
+
+// Responsive table adjustments
+@media (max-width: 768px) {
+  .mat-table {
+    border: 1px solid #ddd;
+  }
+
+  .mat-row, .mat-header-row {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+  }
+
+  .mat-cell, .mat-header-cell {
+    padding: 5px 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mat-header-cell:before {
+    content: attr(data-label);
+    font-weight: bold;
+    margin-right: 10px;
+  }
 }
