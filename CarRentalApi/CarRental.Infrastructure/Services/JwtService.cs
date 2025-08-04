@@ -1,5 +1,4 @@
-﻿// CarRental.Infrastructure/Services/JwtService.cs
-using CarRental.Application.Abstractions;
+﻿using CarRental.Application.Abstractions;
 using CarRental.Domain.Entities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;

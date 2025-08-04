@@ -8,7 +8,6 @@ namespace CarRental.Application.Commands.Rentals.CancelRental;
 public class CancelRentalCommandHandler : IRequestHandler<CancelRentalCommand>
 {
     private readonly IRentalRepository _rentalRepository;
-    private readonly ICarRepository _carRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly RentalSystemAggregateRoot _rentalSystemAggregate;
 
@@ -19,7 +18,6 @@ public class CancelRentalCommandHandler : IRequestHandler<CancelRentalCommand>
         RentalSystemAggregateRoot rentalSystemAggregate)
     {
         _rentalRepository = rentalRepository;
-        _carRepository = carRepository;
         _unitOfWork = unitOfWork;
         _rentalSystemAggregate = rentalSystemAggregate;
     }

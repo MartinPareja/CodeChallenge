@@ -12,6 +12,7 @@ public class CarRentalDbContext : DbContext, IUnitOfWork
 
     public CarRentalDbContext(DbContextOptions<CarRentalDbContext> options) : base(options) //, IPublisher publisher) : base(options)
     {
+        // TODO: Review problem with MediatR publisher injection and entity framework core cli commands
         //_publisher = publisher;
     }
 

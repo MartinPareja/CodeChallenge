@@ -1,5 +1,4 @@
 ﻿using CarRental.Application.Common;
-using CarRental.Application.Queries.Rentals.Common;
 using CarRental.Application.Queries.Users;
 using CarRental.Domain.Repositories;
 using CarRental.Persistence.CommandDb;
